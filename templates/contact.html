@@ -1,0 +1,387 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <title>Contact page section - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+        }
+
+        /*======= Contact ======*/
+
+        .form-control {
+            box-shadow: none !important;
+            outline: none !important;
+            border: 2px solid #cecece;
+            height: 38px;
+        }
+
+        .form-control:hover, .form-control:focus {
+            border-color: #97a0af;
+        }
+
+
+        .error {
+            margin: 8px 0px;
+            display: none;
+            color: red;
+        }
+
+        #ajaxsuccess {
+            font-size: 16px;
+            width: 100%;
+            display: none;
+            clear: both;
+            margin: 8px 0px;
+        }
+
+        .con_sub_text {
+            margin: 20px 0px;
+            font-size: 15px;
+        }
+
+        .contact-detail-box {
+            margin-bottom: 50px;
+            margin-top: 30px;
+        }
+
+        .contact-detail-box address {
+            font-size: 14px;
+        }
+
+        .contact-map {
+            background-color: #ededed;
+        }
+
+        .title-box .border, .btn-primary, .back-to-top,
+        .logo i, .question-q-box, .social-circle li a:hover {
+            background-color: #f16000 !important;
+        }
+
+        .title-box .title-alt, .text-colored, .footer a:hover,
+        .navbar-custom .navbar-nav li a:hover,
+        .navbar-custom .navbar-nav li a:focus,
+        .navbar-custom .navbar-nav li a:active,
+        .navbar-custom .navbar-nav li.active a {
+            color: #f16000;
+        }
+
+        .btn-primary {
+            border: 1px solid #f16000 !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary.focus,
+        .btn-primary:active,
+        .btn-primary:focus,
+        .btn-primary:hover,
+        .open > .dropdown-toggle.btn-primary,
+        .btn-primary.active.focus, .btn-primary.active:focus,
+        .btn-primary.active:hover, .btn-primary:active.focus,
+        .btn-primary:active:focus, .btn-primary:active:hover,
+        .open > .dropdown-toggle.btn-primary.focus,
+        .open > .dropdown-toggle.btn-primary:focus,
+        .open > .dropdown-toggle.btn-primary:hover {
+            background-color: #d85600 !important;
+            border: 1px solid #d85600 !important;
+        }
+
+        .btn-shadow.btn-primary {
+            box-shadow: 1px 5px 9px rgba(241, 96, 1, 0.32);
+        }
+
+
+        /*======= Responsive ======*/
+        @media (min-width: 768px) {
+            .nav-custom-left {
+                margin-left: 5%;
+            }
+
+            .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .contact-page .col-sm-6 {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-custom {
+                -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+                -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+                box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+            }
+
+            .screen-space {
+                margin: 0px auto 50px auto;
+            }
+
+            .feature-detail {
+                padding: 0px 0px 50px 30px !important;
+            }
+
+            .footer h5 {
+                margin-top: 30px;
+            }
+        }
+
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .blog-wrapper .blog-item {
+                width: 50%;
+            }
+
+            .navbar-custom .navbar-nav li a {
+                font-size: 12px;
+            }
+
+            .blog-detail-box {
+                padding-right: 0px;
+            }
+        }
+
+        @media only screen and (min-width: 767px) and (max-width: 991px) {
+
+        }
+
+        @media (max-width: 767px) {
+            .blog-wrapper .blog-item {
+                width: 100%;
+            }
+
+            .logo {
+                margin-top: 7px;
+            }
+
+            .blog-detail-box {
+                padding-right: 0px;
+            }
+        }
+    </style>
+    <!-- Favicons -->
+    <link href="{% static 'img/favicon.png' %}" rel="icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body onload="initMap()">
+<!-- Rest of your HTML content here -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdeys">
+    <div class="row text-center">
+        <div class="col-sm-4">
+            <div class="contact-detail-box">
+                <i class="fa fa-th fa-3x text-colored"></i>
+                <h4>Get In Touch</h4>
+                <abbr title="Phone">P:</abbr> +998 908632230<br>
+                <a href="/cdn-cgi/l/email-protection#1c79717d75705c79717d7570327f7371" class="text-muted"><span
+                        class="__cf_email__"
+                        data-cfemail="b3d6ded2dadff3d6ded2dadf9dd0dcde"></span></a>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="contact-detail-box">
+                <i class="fa fa-map-marker fa-3x text-colored"></i>
+                <h4>Our Location</h4>
+                <address>
+                    Karshi city<br>
+                    Kashkadaryo Region<br>
+                </address>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="contact-detail-box">
+                <i class="fa fa-book fa-3x text-colored"></i>
+                <h4>24x7 Support</h4>
+                <p>Industry's standard dummy text.</p>
+                <h4 class="text-muted"></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="contact-map" style="margin-bottom: 100px">
+
+                <iframe src="https://maps.google.com/maps?q=Navro'z%20restaurant,%20Qarshi,%20Uzbekistan&z=15&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        style="width: 100%; height: 360px;"></iframe>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name2">Name</label>
+                    <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='Name'"
+                           onfocus="if(this.value == 'Name') this.value=''" type="text" value="Name">
+                    <div class="error" id="err-name" style="display: none;">Please enter name</div>
+                </div>
+                <div class="form-group">
+                    <label for="email2">Email</label>
+                    <input class="form-control" id="email2" name="email" type="text"
+                           onfocus="if(this.value == 'E-mail') this.value='';"
+                           onblur="if(this.value == '') this.value='E-mail';" value="E-mail">
+                    <div class="error" id="err-emailvld" style="display: none;">E-mail is not a valid format</div>
+                </div>
+                <div class="form-group">
+                    <label for="message2">Message</label>
+                    <textarea class="form-control" id="message2" name="message" rows="10"
+                              onblur="if(this.value == '') this.value='Message'"
+                              onfocus="if(this.value == 'Message') this.value=''">Message</textarea>
+                    <div class="error" id="err-message" style="display: none;">Please enter message</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="ajaxsuccess" class="text-success">E-mail was successfully sent.</div>
+                        <div class="error" id="err-form" style="display: none;">There was a problem validating the form
+                            please check!
+                        </div>
+                        <div class="error" id="err-timedout">The connection to the server timed out!</div>
+                        <div class="error" id="err-state"></div>
+                        <button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <i class="bi bi-geo-alt icon"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>
+                        A. Navoiy Street <br>
+                        Karshi City<br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>Reservations</h4>
+                    <p>
+                        <strong>Phone:</strong> +9998 908632230<br>
+                        <strong>Email:</strong> joxa2230@gmail.com<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>
+                        <strong>Mon-Sat: 10AM</strong> - 23PM<br>
+                        Sunday: Closed
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Follow Us</h4>
+                <div class="social-links d-flex">
+                    <a href="https://twitter.com/home" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/feed/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Panda Cafe</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+
+</footer><!-- End Footer -->
+<!-- End Footer -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    <script>
+        function initMap() {
+        // Create a new map instance centered at the user's location
+        const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15, // Adjust the zoom level as desired
+        center: {lat: 0, lng: 0}, // Default center before getting user's location
+    });
+
+        // Get the user's location and update the map
+        if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+        function (position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Update the map's center to the user's location
+        map.setCenter({lat: latitude, lng: longitude});
+
+        // Add a marker at the user's location
+        new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map,
+        title: "Your Location",
+    });
+    },
+        function (error) {
+        console.error("Error getting location:", error.message);
+    }
+        );
+    } else {
+        console.log("Geolocation API is not supported in this browser.");
+    }
+    }
+
+</script>
+</body>
+</html>
